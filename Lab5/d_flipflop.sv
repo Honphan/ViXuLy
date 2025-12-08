@@ -1,6 +1,7 @@
 module d_flipflop(
 	input logic clk,
 	input logic reset,
+	input logic enable,
 	input logic d,
 	output logic q
 );
@@ -9,8 +10,10 @@ module d_flipflop(
 	
 		if(reset)
 			q <= 1'b0;
-		else
+		else if(enable)
 			q <= d;
+		else
+			q <= q;
 		
 	end
 endmodule
